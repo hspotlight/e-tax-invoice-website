@@ -4,6 +4,7 @@ import eTaxService from "./eTaxService";
 import React from "react";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
+import data from './data/data.json';
 
 const SearchSection = () => {
   //   const [data, setData] = React.useState<Shop[]>([]);
@@ -19,7 +20,7 @@ const SearchSection = () => {
 
   return (
     <div>
-      <ShopTable />
+      <ShopTable data={data} />
     </div>
   );
 };

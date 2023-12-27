@@ -72,24 +72,26 @@ const SearchSection = () => {
 
   return (
     <div>
-      <h1>
+      <h1 className="text-center">
         รายชื่อผู้ประกอบการที่ได้รับอนุมัติให้จัดทำ ส่งมอบ
         และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์
       </h1>
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="ชื่อผู้เสียภาษี"
-          inputProps={{ "aria-label": "search" }}
-          value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-        />
+      <div className="flex justify-center py-4">
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="ชื่อผู้เสียภาษี"
+            inputProps={{ "aria-label": "search" }}
+            value={text}
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
+          />
+        </Search>
         <Button onClick={searchText}>ค้นหา</Button>
-      </Search>
+      </div>
       <ShopTable data={data} />
     </div>
   );

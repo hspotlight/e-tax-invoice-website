@@ -14,11 +14,13 @@
     "@mui/icons-material": "^5.15.2",
     "@mui/material": "^5.15.2",
     "axios": "^1.6.3",
+    "js-search": "^2.0.1",
     "next": "^14.0.4",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/js-search": "^1.4.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

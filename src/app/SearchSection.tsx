@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { styled, alpha, InputBase } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import { styled, alpha, InputBase, Button } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import eTaxService from "./eTaxService";
+import searchService from "./searchService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
-import data from "./data/data.json";
+import mockData from "./data/data.json";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -23,14 +24,14 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -51,16 +52,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchSection = () => {
-  //   const [data, setData] = React.useState<Shop[]>([]);
+  const [text, setText] = React.useState<string>("");
+  const [data, setData] = React.useState<Shop[]>([]);
 
-  //   const fetchData = async () => {
-  //     const data = await eTaxService.getData();
-  //     setData(data);
-  //   };
+  const fetchData = async () => {
+    const result = await eTaxService.getData();
+    setData(result.data);
+    searchService.setData(result.data);
+  };
 
-  //   React.useEffect(() => {
-  //     fetchData();
-  //   }, []);
+  const searchText = () => {
+    const result = searchService.searchText(text);
+    setData(result);
+  };
+
+  React.useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -75,7 +83,12 @@ const SearchSection = () => {
         <StyledInputBase
           placeholder="ชื่อผู้เสียภาษี"
           inputProps={{ "aria-label": "search" }}
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
         />
+        <Button onClick={searchText}>ค้นหา</Button>
       </Search>
       <ShopTable data={data} />
     </div>

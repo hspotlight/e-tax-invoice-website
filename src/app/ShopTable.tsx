@@ -124,19 +124,23 @@ export default function ShopTable({ data }: { data: Shop[] }) {
           ).map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
                 {row.tax}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
+              <TableCell align="right">
+                {row.name}
+              </TableCell>
+              <TableCell style={{ width: 120 }} align="right">
                 {row.isvat}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.createdate ? new Date(row.createdate).toISOString().split("T")[0] : null}
+                {row.createdate
+                  ? new Date(row.createdate).toISOString().split("T")[0]
+                  : null}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.enddate ? new Date(row.enddate).toISOString().split("T")[0] : null}
+                {row.enddate
+                  ? new Date(row.enddate).toISOString().split("T")[0]
+                  : null}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
                 {row.remark}

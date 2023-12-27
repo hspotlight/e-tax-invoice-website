@@ -1,10 +1,54 @@
 "use client";
 
-import eTaxService from "./eTaxService";
 import React from "react";
+import { styled, alpha, InputBase } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import eTaxService from "./eTaxService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
-import data from './data/data.json';
+import data from "./data/data.json";
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  width: "100%",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
 
 const SearchSection = () => {
   //   const [data, setData] = React.useState<Shop[]>([]);
@@ -20,6 +64,19 @@ const SearchSection = () => {
 
   return (
     <div>
+      <h1>
+        รายชื่อผู้ประกอบการที่ได้รับอนุมัติให้จัดทำ ส่งมอบ
+        และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์
+      </h1>
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+          placeholder="ชื่อผู้เสียภาษี"
+          inputProps={{ "aria-label": "search" }}
+        />
+      </Search>
       <ShopTable data={data} />
     </div>
   );

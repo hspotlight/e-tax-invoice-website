@@ -7,6 +7,7 @@ const setData = (newData: Shop[]) => {
 }
 
 const searchText = (text: string) => {
+    if (text === null || text === undefined || text.length === 0) return data;
     return data.filter(d => d.name.indexOf(text) > 0)
 }
 

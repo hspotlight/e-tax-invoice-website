@@ -126,7 +126,7 @@ export default function ShopTable({ data }: { data: Shop[] }) {
               <TableCell component="th" scope="row">
                 {row.tax}
               </TableCell>
-              <TableCell align="right">
+              <TableCell style={{ maxWidth: 250 }} align="right">
                 {row.name}
               </TableCell>
               <TableCell style={{ width: 120 }} align="right">

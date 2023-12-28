@@ -105,13 +105,14 @@ const SearchSection = () => {
           />
         </Search>
         <Button
-          vaiant="primary"
+          variant="contained"
+          color="primary"
           onClick={searchText}
           disabled={text.length === 0}
         >
           ค้นหา
         </Button>
-        <Button variant="secondary" onClick={clearResult}>
+        <Button variant="contained" color="secondary" onClick={clearResult}>
           ล้างค่าการค้นหา
         </Button>
       </div>

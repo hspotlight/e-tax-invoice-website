@@ -1,14 +1,12 @@
 "use client";
 
 import React from "react";
-// import { logEvent } from "firebase/analytics";
-import { styled, alpha, InputBase, Button, Typography } from "@mui/material";
+import { styled, alpha, InputBase, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import eTaxService from "./eTaxService";
 import searchService from "./searchService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
-// import analytics from "./firebaseConfig";
 // import mockData from "./data/data.json";
 
 const Search = styled("div")(({ theme }) => ({
@@ -54,7 +52,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchSection = () => {
-  const [text, setText] = React.useState<string>("");
   const [data, setData] = React.useState<Shop[]>([]);
 
   const fetchData = async () => {
@@ -63,14 +60,10 @@ const SearchSection = () => {
     searchService.setData(result.data);
   };
 
-  const searchText = () => {
-    const result = searchService.searchText(text);
+  const searchTextOnType = (givenText: string) => {
+    const result = searchService.searchText(givenText);
     setData(result);
-  };
-
-  const clearResult = () => {
-    setData(data);
-  };
+  }
 
   React.useEffect(() => {
     fetchData();
@@ -90,28 +83,11 @@ const SearchSection = () => {
           <StyledInputBase
             placeholder="ชื่อผู้เสียภาษี"
             inputProps={{ "aria-label": "search" }}
-            value={text}
             onChange={(e) => {
-              setText(e.target.value);
-            }}
-            onKeyUp={(e) => {
-              if (e.key === "Enter") {
-                searchText();
-              }
+              searchTextOnType(e.target.value);
             }}
           />
         </Search>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={searchText}
-          disabled={text.length === 0}
-        >
-          ค้นหา
-        </Button>
-        <Button variant="outlined" color="primary" className="ml-4" onClick={clearResult}>
-          ล้างค่าการค้นหา
-        </Button>
       </div>
       <ShopTable data={data} />
     </div>

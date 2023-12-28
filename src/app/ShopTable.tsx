@@ -104,6 +104,10 @@ export default function ShopTable({ data }: { data: Shop[] }) {
     setPage(0);
   };
 
+  React.useEffect(() => {
+    setPage(0)
+  }, [data])
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
@@ -126,10 +130,13 @@ export default function ShopTable({ data }: { data: Shop[] }) {
               <TableCell component="th" scope="row">
                 {row.tax}
               </TableCell>
-              <TableCell style={{ maxWidth: 250 }} align="right">
+              <TableCell style={{ width: 250 }} align="right">
                 {row.name}
               </TableCell>
-              <TableCell style={{ width: 120 }} align="right">
+              <TableCell
+                style={{ width: 120, textAlign: "center" }}
+                align="right"
+              >
                 {row.isvat}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">

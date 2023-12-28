@@ -8,7 +8,7 @@ import eTaxService from "./eTaxService";
 import searchService from "./searchService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
-import analytics from "./firebaseConfig";
+// import analytics from "./firebaseConfig";
 // import mockData from "./data/data.json";
 
 const Search = styled("div")(({ theme }) => ({

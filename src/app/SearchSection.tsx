@@ -64,13 +64,18 @@ const SearchSection = () => {
   };
 
   const searchText = () => {
-    logEvent(analytics, 'search_button_clicked');
+    logEvent(analytics, "search_button_clicked");
     const result = searchService.searchText(text);
     setData(result);
   };
 
+  const clearResult = () => {
+    logEvent(analytics, "clear_button_clicked");
+    setData(data);
+  };
+
   React.useEffect(() => {
-    logEvent(analytics, 'landing_page_loaded');
+    logEvent(analytics, "landing_page_loaded");
     fetchData();
   }, []);
 
@@ -92,9 +97,23 @@ const SearchSection = () => {
             onChange={(e) => {
               setText(e.target.value);
             }}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                searchText();
+              }
+            }}
           />
         </Search>
-        <Button onClick={searchText}>ค้นหา</Button>
+        <Button
+          vaiant="primary"
+          onClick={searchText}
+          disabled={text.length === 0}
+        >
+          ค้นหา
+        </Button>
+        <Button variant="secondary" onClick={clearResult}>
+          ล้างค่าการค้นหา
+        </Button>
       </div>
       <ShopTable data={data} />
     </div>

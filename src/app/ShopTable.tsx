@@ -15,6 +15,8 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { TableHead } from "@mui/material";
 import { Shop } from "./types/Shop";
 
@@ -105,8 +107,8 @@ export default function ShopTable({ data }: { data: Shop[] }) {
   };
 
   React.useEffect(() => {
-    setPage(0)
-  }, [data])
+    setPage(0);
+  }, [data]);
 
   return (
     <TableContainer component={Paper}>
@@ -137,7 +139,11 @@ export default function ShopTable({ data }: { data: Shop[] }) {
                 style={{ width: 120, textAlign: "center" }}
                 align="right"
               >
-                {row.isvat}
+                {row.isvat === "Y" ? (
+                  <CheckCircleIcon style={{ color: "green" }} />
+                ) : (
+                  <CancelIcon style={{ color: "red" }} />
+                )}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
                 {row.createdate

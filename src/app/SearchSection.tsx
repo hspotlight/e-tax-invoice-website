@@ -109,7 +109,7 @@ const SearchSection = () => {
         >
           ค้นหา
         </Button>
-        <Button variant="contained" color="secondary" onClick={clearResult}>
+        <Button variant="outlined" color="primary" className="ml-4" onClick={clearResult}>
           ล้างค่าการค้นหา
         </Button>
       </div>

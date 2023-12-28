@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { logEvent } from "firebase/analytics";
+// import { logEvent } from "firebase/analytics";
 import { styled, alpha, InputBase, Button, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import eTaxService from "./eTaxService";
@@ -64,18 +64,15 @@ const SearchSection = () => {
   };
 
   const searchText = () => {
-    logEvent(analytics, "search_button_clicked");
     const result = searchService.searchText(text);
     setData(result);
   };
 
   const clearResult = () => {
-    logEvent(analytics, "clear_button_clicked");
     setData(data);
   };
 
   React.useEffect(() => {
-    logEvent(analytics, "landing_page_loaded");
     fetchData();
   }, []);
 

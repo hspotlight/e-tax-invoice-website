@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { styled, alpha, InputBase, Button } from "@mui/material";
+import { styled, alpha, InputBase, Button, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import eTaxService from "./eTaxService";
 import searchService from "./searchService";
@@ -72,10 +72,10 @@ const SearchSection = () => {
 
   return (
     <div>
-      <h1 className="text-center">
+      <Typography variant="h6">
         รายชื่อผู้ประกอบการที่ได้รับอนุมัติให้จัดทำ ส่งมอบ
         และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์
-      </h1>
+      </Typography>
       <div className="flex justify-center py-4">
         <Search>
           <SearchIconWrapper>

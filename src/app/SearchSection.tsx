@@ -1,12 +1,14 @@
 "use client";
 
 import React from "react";
+import { getAnalytics, logEvent } from "firebase/analytics";
 import { styled, alpha, InputBase, Button, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import eTaxService from "./eTaxService";
 import searchService from "./searchService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
+import analytics from "./firebaseConfig";
 import mockData from "./data/data.json";
 
 const Search = styled("div")(({ theme }) => ({
@@ -62,11 +64,13 @@ const SearchSection = () => {
   };
 
   const searchText = () => {
+    logEvent(analytics, 'search_button_clicked');
     const result = searchService.searchText(text);
     setData(result);
   };
 
   React.useEffect(() => {
+    logEvent(analytics, 'landing_page_loaded');
     fetchData();
   }, []);
 

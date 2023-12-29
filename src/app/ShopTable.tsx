@@ -17,8 +17,33 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { TableHead } from "@mui/material";
+import { Skeleton, TableHead } from "@mui/material";
 import { Shop } from "./types/Shop";
+
+const SkeletonRow = () => {
+  return (
+    <TableRow>
+      <TableCell>
+        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      </TableCell>
+      <TableCell>
+        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      </TableCell>
+      <TableCell>
+        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      </TableCell>
+      <TableCell>
+        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      </TableCell>
+      <TableCell>
+        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      </TableCell>
+      <TableCell>
+        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      </TableCell>
+    </TableRow>
+  );
+};
 
 function TablePaginationActions(props: any) {
   const theme = useTheme();
@@ -89,7 +114,13 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-export default function ShopTable({ data }: { data: Shop[] }) {
+export default function ShopTable({
+  data,
+  isLoading,
+}: {
+  data: Shop[];
+  isLoading: boolean;
+}) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -112,60 +143,76 @@ export default function ShopTable({ data }: { data: Shop[] }) {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+      <Table>
         <TableHead>
           <TableRow>
-            <TableCell>เลขประจำตัวผู้เสียภาษีอากร</TableCell>
-            <TableCell align="right">ชื่อผู้เสียภาษี</TableCell>
-            <TableCell align="right">ใบกำกับภาษี</TableCell>
-            <TableCell align="right">เริ่มตั้งแต่</TableCell>
-            <TableCell align="right">สิ้นสุด</TableCell>
-            <TableCell align="right">หมายเหตุ</TableCell>
+            <TableCell style={{ width: 205 }}>
+              เลขประจำตัวผู้เสียภาษีอากร
+            </TableCell>
+            <TableCell style={{ width: 250 }} align="right">
+              ชื่อผู้เสียภาษี
+            </TableCell>
+            <TableCell style={{ width: 120 }} align="right">
+              ใบกำกับภาษี
+            </TableCell>
+            <TableCell style={{ width: 160 }} align="right">
+              เริ่มตั้งแต่
+            </TableCell>
+            <TableCell style={{ width: 160 }} align="right">
+              สิ้นสุด
+            </TableCell>
+            <TableCell style={{ width: 160 }} align="right">
+              หมายเหตุ
+            </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {(rowsPerPage > 0
-            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : data
-          ).map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.tax}
-              </TableCell>
-              <TableCell style={{ width: 250 }} align="right">
-                {row.name}
-              </TableCell>
-              <TableCell
-                style={{ width: 120, textAlign: "center" }}
-                align="right"
-              >
-                {row.isvat === "Y" ? (
-                  <CheckCircleIcon style={{ color: "green" }} />
-                ) : (
-                  <CancelIcon style={{ color: "red" }} />
-                )}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.createdate
-                  ? new Date(row.createdate).toISOString().split("T")[0]
-                  : null}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.enddate
-                  ? new Date(row.enddate).toISOString().split("T")[0]
-                  : null}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.remark}
-              </TableCell>
-            </TableRow>
-          ))}
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
-            </TableRow>
-          )}
-        </TableBody>
+        {isLoading && (
+          <TableBody>
+            {Array(10)
+              .fill(0)
+              .map((_, index) => {
+                return <SkeletonRow key={index} />;
+              })}
+          </TableBody>
+        )}
+        {!isLoading && (
+          <TableBody>
+            {(rowsPerPage > 0
+              ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : data
+            ).map((row) => (
+              <TableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                  {row.tax}
+                </TableCell>
+                <TableCell align="right">{row.name}</TableCell>
+                <TableCell style={{ textAlign: "center" }} align="right">
+                  {row.isvat === "Y" ? (
+                    <CheckCircleIcon style={{ color: "green" }} />
+                  ) : (
+                    <CancelIcon style={{ color: "red" }} />
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {row.createdate
+                    ? new Date(row.createdate).toISOString().split("T")[0]
+                    : null}
+                </TableCell>
+                <TableCell align="right">
+                  {row.enddate
+                    ? new Date(row.enddate).toISOString().split("T")[0]
+                    : null}
+                </TableCell>
+                <TableCell align="right">{row.remark}</TableCell>
+              </TableRow>
+            ))}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <TableCell colSpan={6} />
+              </TableRow>
+            )}
+          </TableBody>
+        )}
         <TableFooter>
           <TableRow>
             <TablePagination

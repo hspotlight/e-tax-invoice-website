@@ -54,11 +54,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const SearchSection = () => {
   const [data, setData] = React.useState<Shop[]>([]);
+  const [isLoading, setLoading] = React.useState<boolean>(true);
 
   const fetchData = async () => {
     const result = await eTaxService.getData();
     setData(result.data);
     searchService.setData(result.data);
+    setLoading(false);
   };
 
   const searchTextOnType = (givenText: string) => {
@@ -90,7 +92,7 @@ const SearchSection = () => {
           />
         </Search>
       </div>
-      <ShopTable data={data} />
+      <ShopTable data={data} isLoading={isLoading} />
       <Faq/>
     </div>
   );

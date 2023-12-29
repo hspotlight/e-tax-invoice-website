@@ -19,8 +19,10 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Skeleton, TableHead } from "@mui/material";
 import { Shop } from "./types/Shop";
+import useCustomMediaQuery from "./hooks/useCustomMediaQuery";
 
 const SkeletonRow = () => {
+  const { isDesktop } = useCustomMediaQuery();
   return (
     <TableRow>
       <TableCell>
@@ -32,15 +34,19 @@ const SkeletonRow = () => {
       <TableCell>
         <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
       </TableCell>
-      <TableCell>
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-      </TableCell>
-      <TableCell>
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-      </TableCell>
-      <TableCell>
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-      </TableCell>
+      {isDesktop && (
+        <>
+          <TableCell>
+            <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          </TableCell>
+        </>
+      )}
     </TableRow>
   );
 };
@@ -121,6 +127,7 @@ export default function ShopTable({
   data: Shop[];
   isLoading: boolean;
 }) {
+  const { isDesktop } = useCustomMediaQuery();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -155,15 +162,19 @@ export default function ShopTable({
             <TableCell style={{ width: 120 }} align="right">
               ใบกำกับภาษี
             </TableCell>
-            <TableCell style={{ width: 160 }} align="right">
-              เริ่มตั้งแต่
-            </TableCell>
-            <TableCell style={{ width: 160 }} align="right">
-              สิ้นสุด
-            </TableCell>
-            <TableCell style={{ width: 160 }} align="right">
-              หมายเหตุ
-            </TableCell>
+            {isDesktop && (
+              <>
+                <TableCell style={{ width: 160 }} align="right">
+                  เริ่มตั้งแต่
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="right">
+                  สิ้นสุด
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="right">
+                  หมายเหตุ
+                </TableCell>
+              </>
+            )}
           </TableRow>
         </TableHead>
         {isLoading && (
@@ -193,17 +204,21 @@ export default function ShopTable({
                     <CancelIcon style={{ color: "red" }} />
                   )}
                 </TableCell>
-                <TableCell align="right">
-                  {row.createdate
-                    ? new Date(row.createdate).toISOString().split("T")[0]
-                    : null}
-                </TableCell>
-                <TableCell align="right">
-                  {row.enddate
-                    ? new Date(row.enddate).toISOString().split("T")[0]
-                    : null}
-                </TableCell>
-                <TableCell align="right">{row.remark}</TableCell>
+                {isDesktop && (
+                  <>
+                    <TableCell align="right">
+                      {row.createdate
+                        ? new Date(row.createdate).toISOString().split("T")[0]
+                        : null}
+                    </TableCell>
+                    <TableCell align="right">
+                      {row.enddate
+                        ? new Date(row.enddate).toISOString().split("T")[0]
+                        : null}
+                    </TableCell>
+                    <TableCell align="right">{row.remark}</TableCell>
+                  </>
+                )}
               </TableRow>
             ))}
             {emptyRows > 0 && (

@@ -2,7 +2,7 @@ import SearchSection from './SearchSection'
 
 export default function Home() {
   return (
-    <main className="px-24 pt-24 pb-12" style={{minHeight: 'calc(100vh - 128px)'}}>
+    <main style={{minHeight: 'calc(100vh - 128px)'}}>
       <SearchSection></SearchSection>
     </main>
   )

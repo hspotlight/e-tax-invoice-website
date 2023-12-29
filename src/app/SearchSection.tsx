@@ -8,6 +8,7 @@ import searchService from "./searchService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
 import Faq from "./Faq";
+import useCustomMediaQuery from "./hooks/useCustomMediaQuery";
 // import mockData from "./data/data.json";
 
 const Search = styled("div")(({ theme }) => ({
@@ -53,6 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchSection = () => {
+  const { isDesktop } = useCustomMediaQuery();
   const [data, setData] = React.useState<Shop[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(true);
 
@@ -66,14 +68,14 @@ const SearchSection = () => {
   const searchTextOnType = (givenText: string) => {
     const result = searchService.searchText(givenText);
     setData(result);
-  }
+  };
 
   React.useEffect(() => {
     fetchData();
   }, []);
 
   return (
-    <div>
+    <div className={isDesktop ? "px-24 pt-24 pb-12" : "px-4 pt-4 pb-4"}>
       <Typography variant="h6" className="text-center">
         รายชื่อผู้ประกอบการที่ได้รับอนุมัติให้จัดทำ ส่งมอบ
         และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์
@@ -93,7 +95,7 @@ const SearchSection = () => {
         </Search>
       </div>
       <ShopTable data={data} isLoading={isLoading} />
-      <Faq/>
+      <Faq />
     </div>
   );
 };

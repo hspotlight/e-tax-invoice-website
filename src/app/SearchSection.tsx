@@ -72,7 +72,7 @@ const SearchSection = () => {
 
   return (
     <div>
-      <Typography variant="h6">
+      <Typography variant="h6" className="text-center">
         รายชื่อผู้ประกอบการที่ได้รับอนุมัติให้จัดทำ ส่งมอบ
         และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์
       </Typography>

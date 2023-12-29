@@ -7,6 +7,7 @@ import eTaxService from "./eTaxService";
 import searchService from "./searchService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
+import Faq from "./Faq";
 // import mockData from "./data/data.json";
 
 const Search = styled("div")(({ theme }) => ({
@@ -90,6 +91,7 @@ const SearchSection = () => {
         </Search>
       </div>
       <ShopTable data={data} />
+      <Faq/>
     </div>
   );
 };

@@ -10,7 +10,6 @@ import ShopTable from "./ShopTable";
 import Faq from "./Faq";
 import useCustomMediaQuery from "./hooks/useCustomMediaQuery";
 import MiniSearch from "minisearch";
-// import mockData from "./data/data.json";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -58,7 +57,6 @@ const SearchSection = () => {
   const { isDesktop } = useCustomMediaQuery();
   const [data, setData] = React.useState<Shop[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(true);
-  const [db, setDb] = React.useState<MiniSearch>();
 
   const fetchData = async () => {
     const result = await eTaxService.getData();
@@ -70,7 +68,7 @@ const SearchSection = () => {
     setLoading(false);
   };
 
-  const searchTextOnType = async (givenText: string) => {
+  const searchTextOnType = (givenText: string) => {
     const result = searchService.searchText(givenText)
     setData(result)
   };

@@ -81,6 +81,23 @@ const faqItems: FaqItem[] = [
       </>
     ),
   },
+  {
+    question: "ตัวอย่างใบกำกับภาษี e-tax-invoice",
+    answer: (
+      <>
+        ทางเฟสบุ๊คเพจ TaxBugnoms
+        ได้ลงรูปตัวอย่างของใบกำกับภาษีที่ใช้ลดหย่อยภาษีได้
+        พร้อมจุดที่ต้องสังเกตุในใบกำกับภาษีครับ{" "}
+        <Link
+          href="https://www.facebook.com/TaxBugnoms/posts/pfbid02fFfWRgP9i1ec2GvUXrAhu4PaNioKDd7366nTr7gfJXnZmzCGKjECZxDxsxsrxTR6l"
+          target="_blank"
+          rel="noopener"
+        >
+          ลิ้งค์ต้นทาง
+        </Link>
+      </>
+    ),
+  },
 ];
 
 const FaqItem = ({ item }: { item: FaqItem }) => {

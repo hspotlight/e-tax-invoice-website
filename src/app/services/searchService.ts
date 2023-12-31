@@ -1,5 +1,5 @@
 import MiniSearch from "minisearch";
-import { Shop } from "./types/Shop";
+import { Shop } from "../types/Shop";
 
 let data: Shop[] = [];
 let searchInstance: MiniSearch;

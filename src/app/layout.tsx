@@ -33,12 +33,6 @@ export default function RootLayout({
               HSpotlight
             </a>
           </div>
-          <div>
-            Support me by:{" "}
-            <a href="https://www.buymeacoffee.com/hspotlight" target="_blank">
-              Buy me a coffee
-            </a>
-          </div>
         </div>
       </footer>
     </html>

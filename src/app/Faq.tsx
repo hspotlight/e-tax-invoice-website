@@ -135,6 +135,35 @@ const faqItems: FaqItem[] = [
       </>
     ),
   },
+  {
+    question: "สามารถสนับสนุนผู้พัฒนาระบบนี้ได้อย่างไรบ้าง 🥺🥺🥺",
+    answer: (
+      <ol>
+        <li>
+          - กดไลค์ แชร์ โพสต์ของเพจ Facebook{" "}
+          <Link href="https://www.facebook.com/HSpotlight/" target="_blank">
+            HSpotlight
+          </Link>{" "}
+          เพื่อเป็นกำลังใจในการทำงาน
+        </li>
+        <li>
+          -{" "}
+          <Link href="https://www.buymeacoffee.com/hspotlight" target="_blank">
+            Buy me a coffee
+          </Link>
+        </li>
+        <li>
+          - สนับสนุนผ่าน Promptpay ได้ที่ QR นี้ครับ
+          <img
+            src="/QR-receive-money.JPG"
+            width={440}
+            height={600}
+            alt="QR รับเงิน"
+          />
+        </li>
+      </ol>
+    ),
+  },
 ];
 
 const FaqItem = ({ item }: { item: FaqItem }) => {

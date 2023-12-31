@@ -1,19 +1,41 @@
+import MiniSearch from "minisearch";
 import { Shop } from "./types/Shop";
 
 let data: Shop[] = [];
+let searchInstance: MiniSearch;
+
+const initialize = () => {
+  searchInstance = new MiniSearch<Shop[]>({
+    idField: "tax",
+    fields: ["name", "isvat", "tax"],
+    storeFields: ["name", "isvat", "tax", "type", "createdate", "updatedate"],
+    searchOptions: {
+      prefix: true,
+      fuzzy: true,
+      boost: {
+        name: 2,
+      },
+    },
+  });
+};
 
 const setData = (newData: Shop[]) => {
-    data = newData;
-}
+  data = newData;
+  searchInstance.removeAll();
+  searchInstance.addAll(newData);
+};
 
 const searchText = (text: string) => {
-    if (text === null || text === undefined || text.length === 0) return data;
-    return data.filter(d => d.name.indexOf(text) >= 0)
-}
+  if (!searchInstance) return data;
+  if (text === null || text === undefined || text.length === 0) return data;
+  // Search result actually contains extra fields, but is not used
+  return searchInstance.search(text) as unknown as Shop[];
+};
 
 const searchService = {
-    setData,
-    searchText
-}
+  initialize,
+  setData,
+  searchText,
+};
 
 export default searchService;

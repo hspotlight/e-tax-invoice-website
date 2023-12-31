@@ -17,6 +17,7 @@
     "dotenv": "^16.3.1",
     "firebase": "^10.7.1",
     "js-search": "^2.0.1",
+    "minisearch": "^6.3.0",
     "next": "^14.0.4",
     "react": "^18",
     "react-dom": "^18"

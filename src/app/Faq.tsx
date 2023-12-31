@@ -71,6 +71,14 @@ const faqItems: FaqItem[] = [
           rel="noopener"
         >
           ลิ้งนี้
+        </Link>{" "}
+        <br />
+        <Link
+          href="https://etax.rd.go.th/etax_staticpage/app/emag/flipbook/flipbook07/#p=1"
+          target="_blank"
+          rel="noopener"
+        >
+          คู่มือการใช้งาน
         </Link>
         <img
           src="/etax-receipt-validation.png"
@@ -95,6 +103,35 @@ const faqItems: FaqItem[] = [
         >
           ลิ้งค์ต้นทาง
         </Link>
+      </>
+    ),
+  },
+  {
+    question: "สินค้า-บริการที่ไม่เข้าร่วม",
+    answer: (
+      <>
+        ข้อมูล ณ​วันที่ 7 ธ.ค. 2566 ที่มา โพสต์จากเฟสบุ้คเพจ{" "}
+        <Link
+          href="https://www.facebook.com/IAMConsultingTH/posts/pfbid0MaQE8Fq7bxw3ui8Zo4r2Ygs8McXN1ARNr7BGx2exouKkZP3tmmwR6GaqPGrgvF6Bl"
+          target="_blank"
+          rel="noopener"
+        >
+          I AM Consulting
+        </Link>
+        <ul>
+          <li>สุรา เบียร์ และไวน์</li>
+          <li>ยาสูบ</li>
+          <li>รถยนต์ รถจักรยานยนต์ และเรือ</li>
+          <li>ค่าน้ำมันและก๊าซสำหรับเติมยานพาหนะ</li>
+          <li>ค่าสาธารณูปโภค ค่าน้ำประปา</li>
+          <li>
+            ค่าไฟฟ้า ค่าบริการสัญญาณโทรศัพท์ ค่าบริการสัญญาณอินเทอร์เน็ต
+            ค่าบริการสำหรับบริการที่มีข้อตกลงการให้บริการระยะยาว
+            ซึ่งเริ่มต้นก่อน 1 ม.ค. 67 หรืิิอสิ้นสุดหลัง 15 ก.พ. 67
+            แม้ว่าจะจ่ายค่าบริการ ระหว่าง 1 ม.ค. 67 ถึง 15 ก.พ. 67 ก็ตาม
+          </li>
+          <li>ค่าเบี้ยประกันวินาญภัย</li>
+        </ul>
       </>
     ),
   },

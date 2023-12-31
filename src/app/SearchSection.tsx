@@ -3,13 +3,12 @@
 import React from "react";
 import { styled, alpha, InputBase, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import eTaxService from "./eTaxService";
-import searchService from "./searchService";
+import eTaxService from "./services/eTaxService";
+import searchService from "./services/searchService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
 import Faq from "./Faq";
 import useCustomMediaQuery from "./hooks/useCustomMediaQuery";
-import MiniSearch from "minisearch";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",

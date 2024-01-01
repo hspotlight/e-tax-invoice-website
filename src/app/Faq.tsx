@@ -1,7 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import { IconButton, Link, Typography } from "@mui/material";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import {
+  Collapse,
+  Link,
+  List,
+  ListItemButton,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 import FiberNewIcon from "@mui/icons-material/FiberNew";
 import React, { ReactElement } from "react";
 import ShopAndReferences from "./ShopAndReferences";
@@ -199,28 +206,23 @@ const faqItems: FaqItem[] = [
 
 const FaqItem = ({ item }: { item: FaqItem }) => {
   const [expand, setExpand] = React.useState<boolean>(false);
+
+  const toggle = () => {
+    setExpand((e) => !e);
+  };
+
   return (
-    <div className="mb-4">
-      <div className="flex justify-between">
-        <Typography variant="body1">{item.question}</Typography>
-        {expand ? (
-          <IconButton onClick={() => setExpand(false)}>
-            <KeyboardArrowUpIcon />
-          </IconButton>
-        ) : (
-          <IconButton onClick={() => setExpand(true)}>
-            <KeyboardArrowDownIcon />
-          </IconButton>
-        )}
-      </div>
-      {expand && (
-        <div>
-          <Typography variant="body2">
-            <b>คำตอบ:</b> {item.answer}
-          </Typography>
-        </div>
-      )}
-    </div>
+    <>
+      <ListItemButton onClick={toggle}>
+        <ListItemText primary={item.question} />
+        {expand ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={expand} timeout="auto" unmountOnExit>
+        <Typography variant="body2">
+          <b>คำตอบ:</b> {item.answer}
+        </Typography>
+      </Collapse>
+    </>
   );
 };
 
@@ -230,9 +232,14 @@ const Faq = () => {
       <Typography variant="h6" className="mb-4">
         คำถามที่พบบ่อย
       </Typography>
-      {faqItems.map((item, index) => {
-        return <FaqItem key={index} item={item} />;
-      })}
+      <List
+        className="max-w-100"
+        component="nav"
+      >
+        {faqItems.map((item, index) => {
+          return <FaqItem key={index} item={item} />;
+        })}
+      </List>
     </div>
   );
 };

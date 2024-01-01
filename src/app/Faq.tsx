@@ -184,12 +184,12 @@ const faqItems: FaqItem[] = [
           </Link>{" "}
           เพื่อเป็นกำลังใจในการทำงาน
         </li>
-        <li>
+        {/* <li>
           -{" "}
           <Link href="https://www.buymeacoffee.com/hspotlight" target="_blank">
             Buy me a coffee
           </Link>
-        </li>
+        </li> */}
         <li>
           - สนับสนุนผ่าน Promptpay ได้ที่ QR นี้ครับ
           <img

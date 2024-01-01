@@ -35,7 +35,98 @@ const faqItems: FaqItem[] = [
       "เว็ปไซต์นี้ดึงข้อมูลจากเว็ปไซต์สรรพากรจึงมั่นใจได้ว่าข้อมูลมีความถูกต้องระบบจะทำการอัพเดทข้อมูลกับเว็ปไซต์สรรพากรทุกๆ 12 ชม (ประมาณ 7 โมง และ1ทุ่ม เวลาไทย)",
   },
   {
-    question: "ซื้อของในลาซาด้าและช้อปปี้ยังต้องติดต่อร้านค้าอยู่อีกไหม",
+    question:
+      "รวมร้านค้าที่สามารถออก e-tax invoice & e-receipt ได้​ (รวมในนี้จะได้ดูง่ายๆครับ)",
+    answer: (
+      <>
+        <ol>
+          <li>
+            - Starbuck - ได้ทั้ง shopee , lazada และหน้าร้าน{" "}(
+            <Link
+              href="https://www.starbucks.co.th/th/etax/"
+              target="_blank"
+              rel="noopener"
+            >
+              ดูรายละเอียดที่นี่
+            </Link>
+            )
+          </li>
+          <li>
+            - Homepro{" "}
+            <Link
+              href="https://www.homepro.co.th/promotion/content.jsp?id1=PROMOTION-02&id2=4157102&id3=02"
+              target="_blank"
+              rel="noopener"
+            >
+              ดูรายละเอียดที่นี่
+            </Link>
+          </li>
+          <li>
+            - Central{" "}
+            <Link
+              href="https://www.central.co.th/th/campaign-conditions/easy-e-receipt"
+              target="_blank"
+              rel="noopener"
+            >
+              ดูรายละเอียดที่นี่
+            </Link>
+          </li>
+          <li>
+            - BigC{" "}
+            <Link
+              href="https://www.bigc.co.th/p/easy-e-receipt-2024"
+              target="_blank"
+              rel="noopener"
+            >
+              ดูรายละเอียดที่นี่
+            </Link>
+          </li>
+          <li>
+            - UNIQLO{" "}
+            <Link
+              href="https://www.uniqlo.com/th/th/feature/limited-offers/women?path=6986&flagCodes=limitedOffer#EASY%20E-RECEIPT"
+              target="_blank"
+              rel="noopener"
+            >
+              ดูรายละเอียดที่นี่
+            </Link>
+          </li>
+          <li>
+            - ไทวัสดุ{" "}
+            <Link
+              href="https://www.thaiwatsadu.com/th/page/promotion-monthly"
+              target="_blank"
+              rel="noopener"
+            >
+              ดูรายละเอียดที่นี่
+            </Link>
+          </li>
+          <li>
+            - iStudio by SPVi{" "}
+            <Link
+              href="https://www.facebook.com/istudiospvi/posts/pfbid06wBeJnHpHSbDymEQn8mQffoMQGFBTW2dYtuTtdp3a2PVKCJKyq9WByBpVao91C2Ql"
+              target="_blank"
+              rel="noopener"
+            >
+              ดูรายละเอียดที่นี่
+            </Link>
+          </li>
+          <li>
+            - MAKRO{" "}
+            <Link
+              href="https://www.makro.co.th/campaigns/Easy_EReceipt"
+              target="_blank"
+              rel="noopener"
+            >
+              ดูรายละเอียดที่นี่
+            </Link>
+          </li>
+        </ol>
+      </>
+    ),
+  },
+  {
+    question: "ซื้อของในลาซาด้าและช้อปปี้ยังต้องเช็คกับทางร้านค้าอยู่อีกไหม",
     answer: (
       <>
         ยังต้องตรวจสอบกับทางร้านค้าอีกทีหนึ่งว่าร้านค้าสามารถออกในให้ได้ไหม
@@ -47,6 +138,25 @@ const faqItems: FaqItem[] = [
         >
           ลิ้งนี้
         </Link>
+        <br />
+        จุดสังเกต สินค้าที่มี Easy E-Receipt Tag จะเป็นสินค้าที่ร่วมรายการ
+        <br />
+        Lazada
+        <br />
+        <img
+          src="/Lazada-example-easy-e-receipt.png"
+          alt="Lazada-example-easy-e-receipt"
+          width="500"
+          height="600"
+        />
+        Shopee
+        <br />
+        <img
+          src="/Shopee-example-easy-e-receipt.png"
+          alt="Shopee-example-easy-e-receipt"
+          width="500"
+          height="600"
+        />
       </>
     ),
   },

@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import { IconButton, Link, Typography } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { IconButton, Link, Typography } from "@mui/material";
-import React, { ReactElement } from "react";
-import ShopAndReference from "./ShopAndReference";
 import FiberNewIcon from "@mui/icons-material/FiberNew";
+import React, { ReactElement } from "react";
+import ShopAndReferences from "./ShopAndReferences";
+import data from "./data/shop-and-reference.json";
 
 type FaqItem = {
   question: ReactElement | string;
@@ -43,68 +44,7 @@ const faqItems: FaqItem[] = [
         (รวมในนี้จะได้ดูง่ายๆครับ) <FiberNewIcon style={{ color: "red" }} />
       </>
     ),
-    answer: (
-      <>
-        <ol>
-          <li>
-            -{" "}
-            <ShopAndReference
-              name="Starbuck - ได้ทั้ง shopee , lazada และหน้าร้าน"
-              link="https://www.starbucks.co.th/th/etax/"
-            />
-          </li>
-          <li>
-            -{" "}
-            <ShopAndReference
-              name="Homepro"
-              link="https://www.homepro.co.th/promotion/content.jsp?id1=PROMOTION-02&id2=4157102&id3=02"
-            />
-          </li>
-          <li>
-            -{" "}
-            <ShopAndReference
-              name="Central"
-              link="https://www.central.co.th/th/campaign-conditions/easy-e-receipt"
-            />
-          </li>
-          <li>
-            -{" "}
-            <ShopAndReference
-              name="BigC"
-              link="https://www.bigc.co.th/p/easy-e-receipt-2024"
-            />
-          </li>
-          <li>
-            -{" "}
-            <ShopAndReference
-              name="UNIQLO"
-              link="https://www.uniqlo.com/th/th/feature/limited-offers/women?path=6986&flagCodes=limitedOffer#EASY%20E-RECEIPT"
-            />
-          </li>
-          <li>
-            -{" "}
-            <ShopAndReference
-              name="ไทวัสดุ"
-              link="https://www.thaiwatsadu.com/th/page/promotion-monthly"
-            />
-          </li>
-          <li>
-            -{" "}
-            <ShopAndReference
-              name="iStudio by SPVi"
-              link="https://www.facebook.com/istudiospvi/posts/pfbid06wBeJnHpHSbDymEQn8mQffoMQGFBTW2dYtuTtdp3a2PVKCJKyq9WByBpVao91C2Ql"
-            />
-          </li>
-          <li>
-            -{" "}
-            <ShopAndReference
-              name="MAKRO"
-              link="https://www.makro.co.th/campaigns/Easy_EReceipt"
-            />
-          </li>
-        </ol>
-      </>
-    ),
+    answer: <ShopAndReferences data={data} />,
   },
   {
     question: "ซื้อของในลาซาด้าและช้อปปี้ยังต้องเช็คกับทางร้านค้าอยู่อีกไหม",
@@ -290,8 +230,8 @@ const Faq = () => {
       <Typography variant="h6" className="mb-4">
         คำถามที่พบบ่อย
       </Typography>
-      {faqItems.map((item) => {
-        return <FaqItem key={item.question} item={item} />;
+      {faqItems.map((item, index) => {
+        return <FaqItem key={index} item={item} />;
       })}
     </div>
   );

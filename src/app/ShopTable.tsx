@@ -42,6 +42,9 @@ const SkeletonRow = () => {
           <TableCell>
             <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
           </TableCell>
+          <TableCell>
+            <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          </TableCell>
         </>
       )}
     </TableRow>
@@ -162,6 +165,9 @@ export default function ShopTable({
             {isDesktop && (
               <>
                 <TableCell style={{ width: 160 }} align="right">
+                  ประเภทกิจการ
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="right">
                   เริ่มตั้งแต่
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="right">
@@ -200,12 +206,9 @@ export default function ShopTable({
                 </TableCell>
                 {isDesktop && (
                   <>
-                    <TableCell align="right">
-                      {row.startDateTh}
-                    </TableCell>
-                    <TableCell align="right">
-                      {row.endDateTh}
-                    </TableCell>
+                    <TableCell align="right">{row.isicName}</TableCell>
+                    <TableCell align="right">{row.startDateTh}</TableCell>
+                    <TableCell align="right">{row.endDateTh}</TableCell>
                   </>
                 )}
               </TableRow>

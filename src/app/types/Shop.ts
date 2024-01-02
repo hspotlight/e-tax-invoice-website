@@ -8,5 +8,6 @@ export interface Shop {
     startDateTh: string
     endDateTh?: string
     isicCode: string
+    isicName: string
     sourceFlag: string
 }

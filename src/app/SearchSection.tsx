@@ -9,6 +9,22 @@ import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
 import Faq from "./Faq";
 import useCustomMediaQuery from "./hooks/useCustomMediaQuery";
+import CategorySelect from "./components/CategorySelect";
+import { Category } from "./types/Category";
+
+const getDistinctCategories = (data: Shop[]): Category[] => {
+  const categories: Record<string, string> = {};
+  data.forEach((d) => {
+    categories[d.isicCode] = d.isicName;
+  });
+  const result: Category[] = Object.entries(categories).map((c) => {
+    return {
+      isicCode: c[0],
+      isicName: c[1],
+    };
+  });
+  return result;
+};
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -55,12 +71,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const SearchSection = () => {
   const { isDesktop } = useCustomMediaQuery();
   const [data, setData] = React.useState<Shop[]>([]);
+  const [categories, setCategories] = React.useState<Category[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(true);
 
   const fetchData = async () => {
     const data = await eTaxService.getData();
+    // setCategories(getDistinctCategories(data));
     setData(data);
-
     searchService.initialize();
     searchService.setData(data);
 
@@ -68,8 +85,8 @@ const SearchSection = () => {
   };
 
   const searchTextOnType = (givenText: string) => {
-    const result = searchService.searchText(givenText)
-    setData(result)
+    const result = searchService.searchText(givenText);
+    setData(result);
   };
 
   React.useEffect(() => {
@@ -83,7 +100,8 @@ const SearchSection = () => {
         และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์
       </Typography>
       <div className="flex justify-center py-4">
-        <Search>
+        {/* <CategorySelect categories={categories} /> */}
+        <Search className="flex align-center">
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>

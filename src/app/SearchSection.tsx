@@ -99,6 +99,9 @@ const SearchSection = () => {
         รายชื่อผู้ประกอบการที่ได้รับอนุมัติให้จัดทำ ส่งมอบ
         และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์
       </Typography>
+      <Typography variant="body1" className="text-center" style={{color: 'blue'}}>
+      ร้านค้าอยู่ในรายชื่อของการจัดทำใบกำกับภาษี/ใบรับ ในรูปแบบอิเล็กทรอนิกส์ ทั้งนี้ ขอให้ท่านสอบถามทางร้านค้าโดยตรงว่าสามารถออกใบกำกับภาษีในรูปแบบอิเล็กทรอนิกส์ได้หรือไม่
+      </Typography>
       <div className="flex justify-center py-4">
         {/* <CategorySelect categories={categories} /> */}
         <Search className="flex align-center">

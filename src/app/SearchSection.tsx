@@ -9,8 +9,11 @@ import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
 import Faq from "./Faq";
 import useCustomMediaQuery from "./hooks/useCustomMediaQuery";
-import CategorySelect from "./components/CategorySelect";
+import FiberNewIcon from "@mui/icons-material/FiberNew";
+// import CategorySelect from "./components/CategorySelect";
 import { Category } from "./types/Category";
+import ShopAndReferences from "./ShopAndReferences";
+import shopAndReferencesData from "./data/shop-and-reference.json";
 
 const getDistinctCategories = (data: Shop[]): Category[] => {
   const categories: Record<string, string> = {};
@@ -99,8 +102,14 @@ const SearchSection = () => {
         รายชื่อผู้ประกอบการที่ได้รับอนุมัติให้จัดทำ ส่งมอบ
         และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์
       </Typography>
-      <Typography variant="body1" className="text-center" style={{color: 'blue'}}>
-      ร้านค้าอยู่ในรายชื่อของการจัดทำใบกำกับภาษี/ใบรับ ในรูปแบบอิเล็กทรอนิกส์ ทั้งนี้ ขอให้ท่านสอบถามทางร้านค้าโดยตรงว่าสามารถออกใบกำกับภาษีในรูปแบบอิเล็กทรอนิกส์ได้หรือไม่
+      <Typography
+        variant="body1"
+        className="text-center"
+        style={{ color: "blue" }}
+      >
+        ร้านค้าอยู่ในรายชื่อของการจัดทำใบกำกับภาษี/ใบรับ ในรูปแบบอิเล็กทรอนิกส์
+        ทั้งนี้
+        ขอให้ท่านสอบถามทางร้านค้าโดยตรงว่าสามารถออกใบกำกับภาษีในรูปแบบอิเล็กทรอนิกส์ได้หรือไม่
       </Typography>
       <div className="flex justify-center py-4">
         {/* <CategorySelect categories={categories} /> */}
@@ -118,6 +127,11 @@ const SearchSection = () => {
         </Search>
       </div>
       <ShopTable data={data} isLoading={isLoading} />
+      <Typography variant="body1" className="mt-8">
+        รวมร้านค้าที่สามารถออก e-tax invoice & e-receipt ได้​
+        (รวมในนี้จะได้ดูง่ายๆครับ) <FiberNewIcon style={{ color: "red" }} />
+      </Typography>
+      <ShopAndReferences data={shopAndReferencesData} />
       <Faq />
     </div>
   );

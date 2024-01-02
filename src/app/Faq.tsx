@@ -45,15 +45,6 @@ const faqItems: FaqItem[] = [
       "เว็ปไซต์นี้ดึงข้อมูลจากเว็ปไซต์สรรพากรจึงมั่นใจได้ว่าข้อมูลมีความถูกต้องระบบจะทำการอัพเดทข้อมูลกับเว็ปไซต์สรรพากรทุกๆ 12 ชม (ประมาณ 7 โมง และ1ทุ่ม เวลาไทย)",
   },
   {
-    question: (
-      <>
-        รวมร้านค้าที่สามารถออก e-tax invoice & e-receipt ได้​
-        (รวมในนี้จะได้ดูง่ายๆครับ) <FiberNewIcon style={{ color: "red" }} />
-      </>
-    ),
-    answer: <ShopAndReferences data={data} />,
-  },
-  {
     question: "ซื้อของในลาซาด้าและช้อปปี้ยังต้องเช็คกับทางร้านค้าอยู่อีกไหม",
     answer: (
       <>
@@ -228,7 +219,7 @@ const FaqItem = ({ item }: { item: FaqItem }) => {
 
 const Faq = () => {
   return (
-    <div className="mt-8 max-w-100">
+    <div className="mt-4 max-w-100">
       <Typography variant="h6" className="mb-4">
         คำถามที่พบบ่อย
       </Typography>

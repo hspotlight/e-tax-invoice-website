@@ -7,8 +7,8 @@ let searchInstance: MiniSearch;
 const initialize = () => {
   searchInstance = new MiniSearch<Shop[]>({
     idField: "tax",
-    fields: ["name", "isvat", "tax"],
-    storeFields: ["name", "isvat", "tax", "type", "createdate", "updatedate"],
+    fields: ["name", "isVat", "tax"],
+    storeFields: ["name", "isVat", "tax", "docTaxInvoiceFlag", "docRecieptFlag", "regisDateTh", "startDateTh", "endDateTh", "isicCode", "sourceFlag"],
     searchOptions: {
       prefix: true,
       fuzzy: true,

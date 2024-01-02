@@ -42,9 +42,6 @@ const SkeletonRow = () => {
           <TableCell>
             <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
           </TableCell>
-          <TableCell>
-            <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-          </TableCell>
         </>
       )}
     </TableRow>
@@ -170,9 +167,6 @@ export default function ShopTable({
                 <TableCell style={{ width: 160 }} align="right">
                   สิ้นสุด
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
-                  หมายเหตุ
-                </TableCell>
               </>
             )}
           </TableRow>
@@ -198,7 +192,7 @@ export default function ShopTable({
                 </TableCell>
                 <TableCell align="right">{row.name}</TableCell>
                 <TableCell style={{ textAlign: "center" }} align="right">
-                  {row.isvat === "Y" ? (
+                  {row.isVat === "Y" ? (
                     <CheckCircleIcon style={{ color: "green" }} />
                   ) : (
                     <CancelIcon style={{ color: "red" }} />
@@ -207,16 +201,11 @@ export default function ShopTable({
                 {isDesktop && (
                   <>
                     <TableCell align="right">
-                      {row.createdate
-                        ? new Date(row.createdate).toISOString().split("T")[0]
-                        : null}
+                      {row.startDateTh}
                     </TableCell>
                     <TableCell align="right">
-                      {row.enddate
-                        ? new Date(row.enddate).toISOString().split("T")[0]
-                        : null}
+                      {row.endDateTh}
                     </TableCell>
-                    <TableCell align="right">{row.remark}</TableCell>
                   </>
                 )}
               </TableRow>

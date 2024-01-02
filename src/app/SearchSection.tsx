@@ -58,11 +58,11 @@ const SearchSection = () => {
   const [isLoading, setLoading] = React.useState<boolean>(true);
 
   const fetchData = async () => {
-    const result = await eTaxService.getData();
-    setData(result.data);
+    const data = await eTaxService.getData();
+    setData(data);
 
     searchService.initialize();
-    searchService.setData(result.data);
+    searchService.setData(data);
 
     setLoading(false);
   };

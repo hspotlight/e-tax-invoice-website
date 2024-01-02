@@ -1,17 +1,12 @@
 export interface Shop {
-    id: number;
-    approvedate: string;
-    createby?: null;
-    createdate: string;
-    enddate?: null;
-    isvat: string;
-    name: string;
-    remark?: null;
-    seq: number;
-    tax: string;
-    type: string;
-    updateby?: null;
-    updatedate: string;
-    updatepgm: string;
-    vatchangedate?: null;
+    tax: string
+    name: string
+    isVat: string
+    docTaxInvoiceFlag: string
+    docRecieptFlag: string
+    regisDateTh: string
+    startDateTh: string
+    endDateTh?: string
+    isicCode: string
+    sourceFlag: string
 }

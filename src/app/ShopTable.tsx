@@ -120,6 +120,16 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
+const buildDate = (date: string) => {
+    const dateSplit = date.split('-')
+    console.log(new Date(parseInt(dateSplit[2])-543, parseInt(dateSplit[1]), parseInt(dateSplit[0])))
+    return new Date(parseInt(dateSplit[2])-543, parseInt(dateSplit[1]), parseInt(dateSplit[0])).toLocaleDateString('th-TH', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    })
+}
+
 export default function ShopTable({
   data,
   isLoading,
@@ -156,21 +166,21 @@ export default function ShopTable({
             <TableCell style={{ width: 205 }}>
               เลขประจำตัวผู้เสียภาษีอากร
             </TableCell>
-            <TableCell style={{ width: 250 }} align="right">
+            <TableCell style={{ width: 250 }} align="left">
               ชื่อผู้เสียภาษี
             </TableCell>
-            <TableCell style={{ width: 120 }} align="right">
+            <TableCell style={{ width: 120 }} align="center">
               ใบกำกับภาษี
             </TableCell>
             {isDesktop && (
               <>
-                <TableCell style={{ width: 160 }} align="right">
+                <TableCell style={{ width: 200 }} align="left">
                   ประเภทกิจการ
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
+                <TableCell style={{ width: 140 }} align="left">
                   เริ่มตั้งแต่
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
+                <TableCell style={{ width: 140 }} align="left">
                   สิ้นสุด
                 </TableCell>
               </>
@@ -196,8 +206,8 @@ export default function ShopTable({
                 <TableCell component="th" scope="row">
                   {row.tax}
                 </TableCell>
-                <TableCell align="right">{row.name}</TableCell>
-                <TableCell style={{ textAlign: "center" }} align="right">
+                <TableCell align="left">{row.name}</TableCell>
+                <TableCell style={{ textAlign: "center" }} align="left">
                   {row.isVat === "Y" ? (
                     <CheckCircleIcon style={{ color: "green" }} />
                   ) : (
@@ -206,9 +216,9 @@ export default function ShopTable({
                 </TableCell>
                 {isDesktop && (
                   <>
-                    <TableCell align="right">{row.isicName}</TableCell>
-                    <TableCell align="right">{row.startDateTh}</TableCell>
-                    <TableCell align="right">{row.endDateTh}</TableCell>
+                    <TableCell align="left">{row.isicName}</TableCell>
+                    <TableCell align="left">{buildDate(row.startDateTh)}</TableCell>
+                    <TableCell align="left">{row.endDateTh}</TableCell>
                   </>
                 )}
               </TableRow>

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {Kanit} from "next/font/google";
 import "./globals.css";
+import Navbar from "@/app/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+
+const kanit = Kanit({ subsets: ['thai'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] });
 
 export const metadata: Metadata = {
   title: "ระบบ e-Tax Invoice / e-Receipt",
@@ -16,25 +18,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-      <footer className="text-center mb-8">
-        <div>
-          <div>© 2023, Crafted with 💖 By HSpotlight</div>
-          <div>
-            Facebook:{" "}
-            <a href="https://www.facebook.com/HSpotlight/" target="_blank">
-              HSpotlight
-            </a>
+      <html className="h-full" lang="en">
+        <body className={kanit.className}>
+          <header>
+            <Navbar/>
+          </header>
+          <div className="m-10 font-Kanit">
+            {children}
           </div>
-          <div>
-            Github:{" "}
-            <a href="https://www.github.com/hspotlight/" target="_blank">
-              HSpotlight
-            </a>
-          </div>
-        </div>
-      </footer>
-    </html>
+
+          <footer className="text-center mb-8">
+            <div>
+              <div>© 2023, Crafted with 💖 By HSpotlight</div>
+              <div>
+                Facebook:{" "}
+                <a href="https://www.facebook.com/HSpotlight/" target="_blank">
+                  HSpotlight
+                </a>
+              </div>
+              <div>
+                Github:{" "}
+                <a href="https://www.github.com/hspotlight/" target="_blank">
+                  HSpotlight
+                </a>
+              </div>
+            </div>
+          </footer>
+        </body>
+      </html>
   );
 }

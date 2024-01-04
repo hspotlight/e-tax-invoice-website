@@ -7,7 +7,7 @@ import eTaxService from "./services/eTaxService";
 import searchService from "./services/searchService";
 import { Shop } from "./types/Shop";
 import ShopTable from "./ShopTable";
-import Faq from "./Faq";
+import Page from "./faq/page";
 import useCustomMediaQuery from "./hooks/useCustomMediaQuery";
 import FiberNewIcon from "@mui/icons-material/FiberNew";
 // import CategorySelect from "./components/CategorySelect";
@@ -132,7 +132,7 @@ const SearchSection = () => {
         (รวมในนี้จะได้ดูง่ายๆครับ) <FiberNewIcon style={{ color: "red" }} />
       </Typography>
       <ShopAndReferences data={shopAndReferencesData} />
-      <Faq />
+      {/*<Page />*/}
     </div>
   );
 };

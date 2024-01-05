@@ -211,10 +211,12 @@ const FaqItem = ({ item }: { item: FaqItem }) => {
         <ListItemText primary={item.question} />
         {expand ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse className="p-5 my-5 ml-10 border-[#fec809] border-2 rounded-lg" in={expand} timeout="auto" unmountOnExit>
-        <Typography variant="body2">
-          <b>คำตอบ:</b> {item.answer}
-        </Typography>
+      <Collapse in={expand} timeout="auto" unmountOnExit>
+          <div className="p-5 my-5 ml-10 border-[#fec809] border-2 rounded-lg">
+              <Typography variant="body2">
+                  <b>คำตอบ:</b> {item.answer}
+              </Typography>
+          </div>
       </Collapse>
     </>
   );

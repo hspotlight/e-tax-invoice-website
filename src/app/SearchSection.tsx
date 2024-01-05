@@ -96,7 +96,7 @@ const SearchSection = () => {
   }, []);
 
   return (
-    <div className={isDesktop ? "px-24 pt-24 pb-12" : "px-4 pt-4 pb-4"}>
+    <div className={isDesktop ? "px-24 pt-24 pb-12" : "pt-4 pb-4"}>
       <Typography variant="h6" className="text-center">
         รายชื่อผู้ประกอบการที่ได้รับอนุมัติให้จัดทำ ส่งมอบ
         และเก็บรักษาใบกำกับภาษีอิเล็กทรอนิกส์ และใบรับอิเล็กทรอนิกส์

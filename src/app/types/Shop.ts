@@ -10,4 +10,5 @@ export interface Shop {
     isicCode: string
     isicName: string
     sourceFlag: string
+    source: string
 }

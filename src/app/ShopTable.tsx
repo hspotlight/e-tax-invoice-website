@@ -45,6 +45,9 @@ const SkeletonRow = () => {
           <TableCell>
             <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
           </TableCell>
+          <TableCell>
+            <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          </TableCell>
         </>
       )}
     </TableRow>
@@ -135,6 +138,16 @@ const thaiMonthMapping = {
   "ธ.ค.": "ธันวาคม"
 }
 
+const buildSource = (source: string) => {
+  switch(source) {
+    case 'etax': return 'e-Tax Invoice & e-Receipt';
+    case 'e-filling': return 'efiling.rd.go.th';
+    case 'email':
+    default:
+      return 'E-Tax Invoice By Email';
+  }
+}
+
 const buildDate = (date: string) => {
     if (!date) return date;
     if (date && date.indexOf('-') === -1) {
@@ -213,6 +226,9 @@ export default function ShopTable({
                 <TableCell style={{ width: 140 }} align="left">
                   สิ้นสุด
                 </TableCell>
+                <TableCell style={{ width: 140 }} align="left">
+                  แหล่งที่มาของข้อมูล
+                </TableCell>
               </>
             )}
           </TableRow>
@@ -248,7 +264,8 @@ export default function ShopTable({
                   <>
                     <TableCell align="left">{row.isicName}</TableCell>
                     <TableCell align="left">{buildDate(row.startDateTh)}</TableCell>
-                    <TableCell align="left">{buildDate(row.endDateTh)}</TableCell>
+                    <TableCell align="left">{buildDate(row.endDateTh || "")}</TableCell>
+                    <TableCell align="left">{buildSource(row.source)}</TableCell>
                   </>
                 )}
               </TableRow>

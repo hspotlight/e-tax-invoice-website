@@ -120,7 +120,37 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
+const thaiMonthMapping = {
+  "ม.ค.": "มกราคม",
+  "ก.พ.": "กุมภาพันธ์",
+  "มี.ค.": "มีนาคม",
+  "เม.ย.": "เมษายน",
+  "พ.ค.": "พฤษภาคม",
+  "มิ.ย.": "มิถุนายน",
+  "ก.ค.": "กรกฎาคม",
+  "ส.ค.": "สิงหาคม",
+  "ก.ย.": "กันยายน",
+  "ต.ค.": "ตุลาคม",
+  "พ.ย.": "พฤศจิกายน",
+  "ธ.ค.": "ธันวาคม"
+}
+
 const buildDate = (date: string) => {
+    if (!date) return date;
+    if (date && date.indexOf('-') === -1) {
+      let dateText = "";
+      Object.entries(thaiMonthMapping).forEach(([key, value], index) => {
+        const found = date.indexOf(key) >= 0;
+        if (found) {
+          dateText = date.replace(key, " " + value);
+        }
+      });
+      return dateText;
+    }
+    if (date && date.indexOf('-') === 0 && date.length === 1) {
+      return date;
+    }
+
     const dateSplit = date.split('-')
     console.log(new Date(parseInt(dateSplit[2])-543, parseInt(dateSplit[1]), parseInt(dateSplit[0])))
     return new Date(parseInt(dateSplit[2])-543, parseInt(dateSplit[1]), parseInt(dateSplit[0])).toLocaleDateString('th-TH', {
@@ -218,7 +248,7 @@ export default function ShopTable({
                   <>
                     <TableCell align="left">{row.isicName}</TableCell>
                     <TableCell align="left">{buildDate(row.startDateTh)}</TableCell>
-                    <TableCell align="left">{row.endDateTh}</TableCell>
+                    <TableCell align="left">{buildDate(row.endDateTh)}</TableCell>
                   </>
                 )}
               </TableRow>

@@ -28,8 +28,9 @@ const setData = (newData: Shop[]) => {
 const searchText = (text: string) => {
   if (!searchInstance) return data;
   if (text === null || text === undefined || text.length === 0) return data;
+  return data.filter(x => x.name.includes(text) || x.tax.includes(text));
   // Search result actually contains extra fields, but is not used
-  return searchInstance.search(text) as unknown as Shop[];
+  // return searchInstance.search(text) as unknown as Shop[];
 };
 
 const searchService = {

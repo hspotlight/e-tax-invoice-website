@@ -45,7 +45,13 @@ const Contact = () => {
                         เพื่อเป็นกำลังใจในการทำงาน
                     </li>
                     <li>
-                        - สนับสนุนผ่าน Promptpay ภควัต อเนกวิโรจน์ ได้ที่ QR นี้ครับ
+                        -สนับสนุนผ่าน {" "}
+                        <Link href="https://www.buymeacoffee.com/hspotlight" target="_blank">
+                            Buy me a coffee
+                        </Link>
+                    </li>
+                    <li>
+                        - สนับสนุนผ่าน Promptpay ภควัต อเนกวิโรจน์ ได้ที่ QR นี้ครับ ขอบคุณครับ
                         <img
                             className="mt-4"
                             src="/QR-receive-money.JPG"

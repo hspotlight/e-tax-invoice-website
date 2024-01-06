@@ -45,7 +45,7 @@ const Contact = () => {
                         เพื่อเป็นกำลังใจในการทำงาน
                     </li>
                     <li>
-                        - สนับสนุนผ่าน Promptpay ได้ที่ QR ภควัต อเนกวิโรจน์ นี้ครับ
+                        - สนับสนุนผ่าน Promptpay ภควัต อเนกวิโรจน์ ได้ที่ QR นี้ครับ
                         <img
                             className="mt-4"
                             src="/QR-receive-money.JPG"

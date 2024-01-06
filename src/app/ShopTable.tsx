@@ -272,7 +272,7 @@ export default function ShopTable({
             ))}
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
-                <TableCell colSpan={6} />
+                <TableCell colSpan={7} />
               </TableRow>
             )}
           </TableBody>
@@ -281,7 +281,7 @@ export default function ShopTable({
           <TableRow>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-              colSpan={6}
+              colSpan={7}
               count={data.length}
               rowsPerPage={rowsPerPage}
               page={page}

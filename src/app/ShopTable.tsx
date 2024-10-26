@@ -135,43 +135,55 @@ const thaiMonthMapping = {
   "ก.ย.": "กันยายน",
   "ต.ค.": "ตุลาคม",
   "พ.ย.": "พฤศจิกายน",
-  "ธ.ค.": "ธันวาคม"
-}
+  "ธ.ค.": "ธันวาคม",
+};
 
 const buildSource = (source: string) => {
-  switch(source) {
-    case 'etax': return 'e-Tax Invoice & e-Receipt';
-    case 'e-filling': return 'efiling.rd.go.th';
-    case 'email':
+  switch (source) {
+    case "etax":
+      return "e-Tax Invoice & e-Receipt";
+    case "e-filling":
+      return "efiling.rd.go.th";
+    case "email":
     default:
-      return 'E-Tax Invoice By Email';
+      return "E-Tax Invoice By Email";
   }
-}
+};
 
 const buildDate = (date: string) => {
-    if (!date) return date;
-    if (date && date.indexOf('-') === -1) {
-      let dateText = "";
-      Object.entries(thaiMonthMapping).forEach(([key, value], index) => {
-        const found = date.indexOf(key) >= 0;
-        if (found) {
-          dateText = date.replace(key, " " + value);
-        }
-      });
-      return dateText;
-    }
-    if (date && date.indexOf('-') === 0 && date.length === 1) {
-      return date;
-    }
+  if (!date) return date;
+  if (date && date.indexOf("-") === -1) {
+    let dateText = "";
+    Object.entries(thaiMonthMapping).forEach(([key, value], index) => {
+      const found = date.indexOf(key) >= 0;
+      if (found) {
+        dateText = date.replace(key, " " + value);
+      }
+    });
+    return dateText;
+  }
+  if (date && date.indexOf("-") === 0 && date.length === 1) {
+    return date;
+  }
 
-    const dateSplit = date.split('-')
-    console.log(new Date(parseInt(dateSplit[2])-543, parseInt(dateSplit[1]), parseInt(dateSplit[0])))
-    return new Date(parseInt(dateSplit[2])-543, parseInt(dateSplit[1]), parseInt(dateSplit[0])).toLocaleDateString('th-TH', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    })
-}
+  const dateSplit = date.split("-");
+  console.log(
+    new Date(
+      parseInt(dateSplit[2]) - 543,
+      parseInt(dateSplit[1]) - 1,
+      parseInt(dateSplit[0])
+    )
+  );
+  return new Date(
+    parseInt(dateSplit[2]) - 543,
+    parseInt(dateSplit[1]) - 1,
+    parseInt(dateSplit[0])
+  ).toLocaleDateString("th-TH", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 
 export default function ShopTable({
   data,
@@ -263,9 +275,15 @@ export default function ShopTable({
                 {isDesktop && (
                   <>
                     <TableCell align="left">{row.isicName}</TableCell>
-                    <TableCell align="left">{buildDate(row.startDateTh)}</TableCell>
-                    <TableCell align="left">{buildDate(row.endDateTh || "")}</TableCell>
-                    <TableCell align="left">{buildSource(row.source)}</TableCell>
+                    <TableCell align="left">
+                      {buildDate(row.startDateTh)}
+                    </TableCell>
+                    <TableCell align="left">
+                      {buildDate(row.endDateTh || "")}
+                    </TableCell>
+                    <TableCell align="left">
+                      {buildSource(row.source)}
+                    </TableCell>
                   </>
                 )}
               </TableRow>
